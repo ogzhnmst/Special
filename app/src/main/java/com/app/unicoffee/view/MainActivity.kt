@@ -57,8 +57,6 @@ class MainActivity : AppCompatActivity() {
         controlledProcessMain()
         getDataMain()
 
-        // İlk committ
-
         binding.contactText.setOnClickListener {
 
             val contactDialog = AlertDialog.Builder(this)
