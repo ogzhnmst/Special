@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         controlledProcessMain()
         getDataMain()
 
-        // İlk commit
+        // İlk committ
 
         binding.contactText.setOnClickListener {
 
