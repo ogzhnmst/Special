@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "881653222080",
+    "project_id": "uniqcoffee-7c387",
+    "storage_bucket": "uniqcoffee-7c387.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881653222080:android:691058c04dd7f48a953b25",
+        "android_client_info": {
+          "package_name": "com.app.unicoffee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "881653222080-904h8rmhdi7g79mt5tqdvh63ncv1g7s6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1s83RpJy0GUUqadfv5CR8ZMyEMaCaJbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881653222080-904h8rmhdi7g79mt5tqdvh63ncv1g7s6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

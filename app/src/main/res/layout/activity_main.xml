@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/other_image"
+    android:orientation="vertical"
+    tools:context=".view.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-2824425182560416/6362423288"></com.google.android.gms.ads.AdView>
+
+
+        <TextView
+            android:id="@+id/coffee_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/coffee_desc"
+            android:layout_marginStart="70dp"
+            android:fontFamily="@font/robotobold"
+            android:gravity="center"
+            android:text="Americano"
+            android:textColor="@color/white"
+            android:textSize="50sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/coffee_desc"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_above="@id/details_text"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="35dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/robotolight"
+            android:gravity="start"
+            android:maxLines="2"
+            android:text="Americano"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/details_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/contact_text"
+            android:layout_marginStart="70dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/robotoblack"
+            android:text="@string/details"
+            android:textColor="#ff6d00"
+            android:textSize="17sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/contact_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/btn_next_list"
+            android:layout_marginStart="70dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/robotoblack"
+            android:text="@string/contact"
+            android:textColor="#ff6d00"
+            android:textSize="17sp">
+
+        </TextView>
+
+
+        <Button
+            android:id="@+id/btn_next_list"
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="70dp"
+            android:layout_marginBottom="110dp"
+            android:background="@drawable/dialog_background"
+            android:backgroundTint="#435455"
+            android:gravity="center"
+            android:text="Coffee List"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold">
+
+        </Button>
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="3dp"
+            android:layout_height="220dp"
+            android:background="@drawable/view_line"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="110dp">
+        </View>
+
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>
