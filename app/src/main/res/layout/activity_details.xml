@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".view.DetailsActivity"
     android:orientation="vertical"
-    android:background="@drawable/other_image">
+    android:background="@color/background">
 
     <RelativeLayout
         android:id="@+id/details_relative_layout"
@@ -18,84 +18,85 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:indeterminate="true"
             android:indeterminateDrawable="@drawable/progres_bar_background"
             android:progress="0"
-            android:layout_marginTop="115dp" />
+            android:layout_marginTop="300dp" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/coffee_image"
-            android:layout_width="180dp"
-            android:layout_height="100dp"
+            android:id="@+id/specialDetailsimage"
+            android:layout_width="370dp"
+            android:layout_height="490dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="90dp"
-            app:shapeAppearanceOverlay="@style/Circular"
-            app:srcCompat="@drawable/dialog_background">
+            android:layout_marginTop="65dp"
+            app:shapeAppearanceOverlay="@style/detailImageCircular">
 
         </com.google.android.material.imageview.ShapeableImageView>
 
         <TextView
-            android:id="@+id/details_coffee_name"
+            android:id="@+id/detailsMknName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/coffee_image"
-            android:text="Coffee Name"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            android:layout_centerHorizontal="true"
+            android:layout_below="@id/specialDetailsimage"
+            android:layout_alignLeft="@id/details_special_name"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/robotoblack">
+            android:fontFamily="@font/robotoblack"
+            android:gravity="start"
+            android:text="Mekan adı"
+            android:textColor="@color/white"
+            android:textSize="15sp">
 
         </TextView>
 
-        <ScrollView
-            android:id="@+id/scroll_historical"
+        <TextView
+            android:id="@+id/details_special_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailsMknName"
+            android:layout_alignLeft="@+id/specialDetailsimage"
+            android:fontFamily="@font/robotoblack"
+            android:letterSpacing="0.05"
+            android:gravity="start"
+            android:text="İçecek ismi"
+            android:textColor="@color/white"
+            android:textSize="30sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/detailsSpecials"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/details_coffee_name"
+            android:layout_below="@id/details_special_name"
             android:layout_marginTop="10dp"
-            android:padding="10dp">
+            android:layout_marginBottom="5dp"
+            android:layout_alignLeft="@id/details_special_name"
+            android:ellipsize="end"
+            android:fontFamily="@font/robotoregular"
+            android:gravity="start"
+            android:text="SpecialDetails"
+            android:textColor="@color/white"
+            android:textSize="17sp">
 
-            <LinearLayout
-                android:id="@+id/scroll_in_linearlayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+        </TextView>
 
-                <TextView
-                    android:id="@+id/details_coffee_historical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/robotolight"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="historical"
-                    android:textColor="@color/white"
-                    android:textSize="17sp">
+        <Button
+            android:id="@+id/detailsBackToMain"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_details_background"
+            android:layout_alignLeft="@id/details_special_name"
+            android:fontFamily="@font/robotoblack"
+            android:text="Ana Sayfa"
+            android:textColor="@color/white"
+            android:textSize="10sp">
 
-                </TextView>
-
-                <TextView
-                    android:id="@+id/details_coffee_type"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/robotolight"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="type"
-                    android:textColor="@color/white"
-                    android:textSize="17sp">
-
-                </TextView>
-
-            </LinearLayout>
-
-        </ScrollView>
+        </Button>
 
     </RelativeLayout>
 

@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="cardview">#F5F5F5</color>
-    <color name="progresbarstartColor">#3B3E41</color>
-    <color name="progresbarendColor">#F5F5F5</color>
-    <color name="background">#FFFFFFFF</color>
-    <color name="locationButton">#F5F5F5</color>
+    <color name="cardview">#575757</color>
+    <color name="progresbarstartColor">#F5F5F5</color>
+    <color name="progresbarendColor">#3B3E41</color>
+    <color name="background">#3B3E41</color>
+    <color name="locationButton">#575757</color>
     <color name="purple_200">#FFFFFFFF</color>
     <color name="purple_500">#FFFFFFFF</color>
     <color name="purple_700">#FFFFFFFF</color>
     <color name="teal_200">#FFFFFFFF</color>
     <color name="teal_700">#FFFFFFFF</color>
     <color name="black">#242424</color>
-    <color name="white">#1D2021</color>
+    <color name="white">#FFFFFFFF</color>
     <color name="text_color">#FFFFFFFF</color>
     <color name="dialog_color">#E2E2E2</color>
+
 </resources>

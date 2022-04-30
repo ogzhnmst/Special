@@ -2,6 +2,7 @@ package com.app.unicoffee.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -10,8 +11,7 @@ import android.view.WindowManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatDelegate
-import com.app.unicoffee.services.CoffeeData
+import com.app.unicoffee.services.SpecialsData
 import com.app.unicoffee.services.ConnectionType
 import com.app.unicoffee.services.NetworkMonitorUtil
 import com.app.unicoffee.R
@@ -19,17 +19,20 @@ import com.app.unicoffee.databinding.ActivityMainBinding
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.squareup.picasso.Picasso
+import java.lang.Exception
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val networkMonitor = NetworkMonitorUtil(this)
-    private lateinit var coffeeArrayList : ArrayList<CoffeeData>
+    private lateinit var specialsArrayList : ArrayList<SpecialsData>
     private lateinit var db : FirebaseFirestore
     lateinit var mAdView : AdView
 
@@ -52,20 +55,10 @@ class MainActivity : AppCompatActivity() {
         mAdView.loadAd(adRequest)
 
         db = Firebase.firestore
-        coffeeArrayList = ArrayList<CoffeeData>()
+        specialsArrayList = ArrayList<SpecialsData>()
 
         controlledProcessMain()
         getDataMain()
-
-        binding.contactText.setOnClickListener {
-
-            val contactDialog = AlertDialog.Builder(this)
-            val mainView : View = layoutInflater.inflate(R.layout.contact_layout,null)
-            contactDialog.setView(mainView)
-            contactDialog.show().window!!.setBackgroundDrawableResource(R.drawable.dialog_background)
-            //CONTACT SHOW IN ALERT DIALOG
-
-        }
 
     }
 
@@ -76,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun getDataMain() {
-        db.collection("coffees").orderBy("date",
+        db.collection("specials").orderBy("date",
             Query.Direction.DESCENDING).addSnapshotListener { value, error ->
 
             if (error != null) {
@@ -88,35 +81,73 @@ class MainActivity : AppCompatActivity() {
 
                         val documents = value.documents
 
-                        coffeeArrayList.clear()
+                        specialsArrayList.clear()
 
                         for (document in documents) {
 
-                            val coffeename = document.get("coffeename") as String
-                            val coffeetype = document.get("coffeetype") as String
-                            val coffeehistorical = document.get("coffeehistorical") as String
-                            val coffeeImageLink = document.get("imagelink") as String
+                            val specialName = document.get("specialName") as String
+                            val specialDetails = document.get("specialDetails") as String
+                            val locationlink = document.get("locationlink") as String
+                            val imagelink = document.get("imagelink") as String
                             val newOrOld = document.get("neworold") as String
+                            val date = document.get("date") as Timestamp
+                            val specialPrice = document.get("specialPrice") as String
+                            val specialLocationName = document.get("specialLocationName") as String
 
-                            val coffeeData = CoffeeData(coffeename,coffeetype,coffeehistorical,coffeeImageLink)
-                            coffeeArrayList.add(coffeeData)
+                            println(specialName)
+                            println(specialDetails)
+                            println(locationlink)
+                            println(imagelink)
+                            println(newOrOld)
+                            println(date)
+                            println(specialPrice)
+                            println(specialLocationName)
+
+                            binding.specialPricetext.text = specialPrice
+
+
+                            val coffeeData = SpecialsData(specialName,specialDetails,imagelink,locationlink,date,specialPrice,specialLocationName)
+                            specialsArrayList.add(coffeeData)
+
+                            Picasso.get().load(imagelink).fit().centerCrop().into(binding.mainImageView, object : com.squareup.picasso.Callback {
+                                override fun onSuccess() {
+                                    binding.progressBarMain.visibility = View.GONE
+                                }
+
+                                override fun onError(e: Exception?) {
+                                    binding.progressBarMain.visibility = View.GONE
+                                    Toast.makeText(this@MainActivity,"Yükleme sırasında sorun oluştu. Anlayışınızı rica ederiz.", Toast.LENGTH_LONG).show()
+                                }
+
+                            })
+
+                            binding.locationButton.setOnClickListener {
+
+                                if (true) {
+                                    val getMapsURL = Uri.parse(locationlink)
+                                    val mapIntent = Intent(Intent.ACTION_VIEW,getMapsURL)
+                                    mapIntent.setPackage("com.google.android.apps.maps")
+                                    startActivity(mapIntent)
+                                }else {
+                                    Toast.makeText(this,"Sanırım Konum bilgisinde bir hata almaktayız. Lütfen daha sonra tekrar deneyiniz", Toast.LENGTH_LONG).show()
+                                }
+                            }
 
                             if (newOrOld != null) {
 
-                                if (newOrOld == "new") {
+                                if (newOrOld == "n") {
 
-                                    binding.coffeeName.text = coffeename
-                                    binding.coffeeDesc.text = coffeehistorical
+                                    binding.specialName.text = specialName
 
-                                    binding.detailsText.setOnClickListener {
+                                    binding.descButton.setOnClickListener {
                                         val homeDetailsTextNextActivity = Intent(this,
                                             DetailsActivity::class.java)
                                         val mainToDetailsActivity = 1
                                         homeDetailsTextNextActivity.putExtra("1",mainToDetailsActivity)
-                                        homeDetailsTextNextActivity.putExtra("coffeename1",coffeename)
-                                        homeDetailsTextNextActivity.putExtra("coffeetype1",coffeetype)
-                                        homeDetailsTextNextActivity.putExtra("coffeehistorical1",coffeehistorical)
-                                        homeDetailsTextNextActivity.putExtra("imagelink1",coffeeImageLink)
+                                        homeDetailsTextNextActivity.putExtra("specialname1",specialName)
+                                        homeDetailsTextNextActivity.putExtra("specialLocationName",specialLocationName)
+                                        homeDetailsTextNextActivity.putExtra("specialsdetails1",specialDetails)
+                                        homeDetailsTextNextActivity.putExtra("imagelink1",imagelink)
                                         startActivity(homeDetailsTextNextActivity)
 
                                     }

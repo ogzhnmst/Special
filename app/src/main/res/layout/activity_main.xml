@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/other_image"
+    android:background="@color/background"
     android:orientation="vertical"
     tools:context=".view.MainActivity">
 
@@ -19,104 +19,166 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="40dp"
-            app:adSize="BANNER"
-            app:adUnitId="ca-app-pub-2824425182560416/6362423288"></com.google.android.gms.ads.AdView>
-
-
-        <TextView
-            android:id="@+id/coffee_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/coffee_desc"
-            android:layout_marginStart="70dp"
-            android:fontFamily="@font/robotobold"
-            android:gravity="center"
-            android:text="Americano"
-            android:textColor="@color/white"
-            android:textSize="50sp">
-
-        </TextView>
-
-        <TextView
-            android:id="@+id/coffee_desc"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_above="@id/details_text"
-            android:layout_marginStart="70dp"
-            android:layout_marginEnd="35dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/robotolight"
-            android:gravity="start"
-            android:maxLines="2"
-            android:text="Americano"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold">
-
-        </TextView>
-
-        <TextView
-            android:id="@+id/details_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/contact_text"
-            android:layout_marginStart="70dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:layout_marginBottom="20dp"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-2824425182560416/6362423288" />
+
+
+        <TextView
+            android:id="@+id/specialName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="90dp"
             android:fontFamily="@font/robotoblack"
-            android:text="@string/details"
-            android:textColor="#ff6d00"
-            android:textSize="17sp">
+            android:gravity="center"
+            android:letterSpacing="0.05"
+            android:text="Americano"
+            android:textColor="@color/white"
+            android:textSize="35sp">
 
         </TextView>
 
         <TextView
-            android:id="@+id/contact_text"
+            android:id="@+id/ofWeekText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@id/btn_next_list"
-            android:layout_marginStart="70dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/robotoblack"
-            android:text="@string/contact"
-            android:textColor="#ff6d00"
-            android:textSize="17sp">
+            android:fontFamily="@font/robotolight"
+            android:layout_below="@id/specialName"
+            android:layout_alignLeft="@id/specialName"
+            android:letterSpacing="0.05"
+            android:gravity="center"
+            android:text="Haftanın Speciali..."
+            android:textColor="@color/white"
+            android:textSize="15sp">
 
         </TextView>
 
+        <ProgressBar
+            android:id="@+id/progressBarMain"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="115dp"
+            android:layout_centerVertical="true"
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/progres_bar_background"
+            android:progress="0"
+            android:layout_marginTop="115dp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/mainImageView"
+            android:layout_width="189dp"
+            android:layout_height="413dp"
+            app:shapeAppearanceOverlay="@style/mainImageCircular"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="215dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginBottom="35dp">
+
+        </com.google.android.material.imageview.ShapeableImageView>
+
+        <View
+            android:id="@+id/mainButtonBackground1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="235dp"
+            android:background="@drawable/main_button_backgorund"
+            android:backgroundTint="@color/locationButton">
+
+        </View>
 
         <Button
-            android:id="@+id/btn_next_list"
-            android:layout_width="120dp"
-            android:layout_height="35dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginBottom="110dp"
-            android:background="@drawable/dialog_background"
-            android:backgroundTint="#435455"
-            android:gravity="center"
-            android:text="Coffee List"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textStyle="bold">
+            android:id="@+id/locationButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="245dp"
+            android:background="@drawable/ic_location_button"
+            android:backgroundTint="@color/white">
 
         </Button>
 
         <View
-            android:id="@+id/view_line"
-            android:layout_width="3dp"
-            android:layout_height="220dp"
-            android:background="@drawable/view_line"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginBottom="110dp">
+            android:id="@+id/mainButtonBackground2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/main_button_backgorund"
+            android:backgroundTint="@color/locationButton"
+            android:layout_below="@id/mainButtonBackground1"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="45dp">
         </View>
 
+        <Button
+            android:id="@+id/descButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/mainButtonBackground1"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="91dp"
+            android:background="@drawable/ic_content_button"
+            android:backgroundTint="@color/white">
+
+        </Button>
+
+        <View
+            android:id="@+id/mainButtonBackground3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/main_button_backgorund"
+            android:backgroundTint="@color/locationButton"
+            android:layout_below="@id/mainButtonBackground2"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="45dp">
+        </View>
+
+        <TextView
+            android:id="@+id/specialPricetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="45₺"
+            android:fontFamily="@font/robotoblack"
+            android:textSize="27sp"
+            android:textColor="@color/white"
+            android:layout_marginStart="57dp"
+            android:layout_below="@id/mainButtonBackground2"
+            android:layout_marginTop="95dp" >
+
+        </TextView>
 
 
+        <TextView
+            android:id="@+id/specialListText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_next_list"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/robotoblack"
+            android:gravity="center"
+            android:letterSpacing="0.05"
+            android:text="Special List"
+            android:textColor="@color/white"
+            android:textSize="15sp">
+
+        </TextView>
+
+        <Button
+            android:id="@+id/btn_next_list"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/mainImageView"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/buttonlist"
+            android:backgroundTint="@color/white">
+
+        </Button>
 
     </RelativeLayout>
 

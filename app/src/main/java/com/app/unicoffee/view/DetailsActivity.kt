@@ -36,6 +36,12 @@ class DetailsActivity : AppCompatActivity() {
 
         controlledProcessDetail()
         showDetailsInfo()
+
+        binding.detailsBackToMain.setOnClickListener {
+            val detailsBackToMainButton = Intent(this,MainActivity::class.java)
+            startActivity(detailsBackToMainButton)
+            finish()
+        }
     }
 
     fun showDetailsInfo () {
@@ -48,16 +54,16 @@ class DetailsActivity : AppCompatActivity() {
 
                 val fromMain = intent
 
-                val coffeename = fromMain.getSerializableExtra("coffeename1")
-                val coffeehistorical = fromMain.getSerializableExtra("coffeehistorical1")
-                val coffeetype = fromMain.getSerializableExtra("coffeetype1")
+                val specialName = fromMain.getSerializableExtra("specialname1")
+                val specialLocationName = fromMain.getSerializableExtra("specialLocationName")
+                val detailsSpaciels = fromMain.getSerializableExtra("specialsdetails1")
                 val imagelink = fromMain.getSerializableExtra("imagelink1") as String
 
-                binding.detailsCoffeeName.text = coffeename.toString()
-                binding.detailsCoffeeHistorical.text = coffeehistorical.toString()
-                binding.detailsCoffeeType.text = coffeetype.toString()
+                binding.detailsSpecialName.text = specialName.toString()
+                binding.detailsMknName.text = specialLocationName.toString()
+                binding.detailsSpecials.text = detailsSpaciels.toString()
 
-                Picasso.get().load(imagelink).fit().centerCrop().into(binding.coffeeImage, object : com.squareup.picasso.Callback {
+                Picasso.get().load(imagelink).fit().centerCrop().into(binding.specialDetailsimage, object : com.squareup.picasso.Callback {
                     override fun onSuccess() {
                         binding.progressBar.visibility = View.GONE
                     }
@@ -74,16 +80,16 @@ class DetailsActivity : AppCompatActivity() {
 
                 val fromList = intent
 
-                val coffeename2 = fromList.getSerializableExtra("coffeename2")
-                val coffeetype2 = fromList.getSerializableExtra("coffeetype2")
-                val coffeehistorical2 = fromList.getSerializableExtra("coffeehistorical2")
+                val specialName2 = fromList.getSerializableExtra("specialName2")
+                val specialDetails2 = fromList.getSerializableExtra("specialDetails2")
                 val imagelink2 = fromList.getSerializableExtra("imagelink2") as String
+                val locationName = fromList.getSerializableExtra("locationName2")
 
-                binding.detailsCoffeeName.text = coffeename2.toString()
-                binding.detailsCoffeeHistorical.text = coffeehistorical2.toString()
-                binding.detailsCoffeeType.text = coffeetype2.toString()
+                binding.detailsSpecialName.text = specialName2.toString()
+                binding.detailsSpecials.text = specialDetails2.toString()
+                binding.detailsMknName.text = locationName.toString()
 
-                Picasso.get().load(imagelink2).fit().centerCrop().into(binding.coffeeImage,object : com.squareup.picasso.Callback {
+                Picasso.get().load(imagelink2).fit().centerCrop().into(binding.specialDetailsimage,object : com.squareup.picasso.Callback {
                     override fun onSuccess() {
                         binding.progressBar.visibility = View.GONE
                     }

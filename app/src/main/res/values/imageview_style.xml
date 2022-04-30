@@ -5,4 +5,16 @@
         <item name="cornerSize">13%</item>
     </style>
 
+    <style name="listImageCircular" >
+        <item name="cornerSize">5%</item>
+    </style>
+
+    <style name="mainImageCircular" >
+        <item name="cornerSize">1%</item>
+    </style>
+
+    <style name="detailImageCircular" >
+        <item name="cornerSize">2%</item>
+    </style>
+
 </resources>

@@ -10,12 +10,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.app.unicoffee.services.CoffeeData
+import com.app.unicoffee.services.SpecialsData
 import com.app.unicoffee.services.ConnectionType
 import com.app.unicoffee.services.NetworkMonitorUtil
 import com.app.unicoffee.R
 import com.app.unicoffee.adapter.CoffeeAdapter
 import com.app.unicoffee.databinding.ActivityListBinding
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
@@ -28,7 +29,7 @@ class ListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListBinding
     private val networkMonitor = NetworkMonitorUtil(this)
     private lateinit var coffeeadapter : CoffeeAdapter
-    private lateinit var coffeeArrayList : ArrayList<CoffeeData>
+    private lateinit var specialsArrayList : ArrayList<SpecialsData>
     private lateinit var db : FirebaseFirestore
 
 
@@ -43,7 +44,7 @@ class ListActivity : AppCompatActivity() {
         this.setFinishOnTouchOutside(false)
 
         db = Firebase.firestore
-        coffeeArrayList = ArrayList<CoffeeData>()
+        specialsArrayList = ArrayList<SpecialsData>()
         getDataList()
         RecyclerListActivity()
         controlledProcessList()
@@ -55,7 +56,7 @@ class ListActivity : AppCompatActivity() {
     fun RecyclerListActivity () {
 
         binding.recyclercoffee.layoutManager = LinearLayoutManager(this)
-        coffeeadapter = CoffeeAdapter(coffeeArrayList)
+        coffeeadapter = CoffeeAdapter(specialsArrayList)
         binding.recyclercoffee.adapter = coffeeadapter
 
     }
@@ -69,7 +70,7 @@ class ListActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun getDataList() {
-        db.collection("coffees").orderBy("date",Query.Direction.DESCENDING).addSnapshotListener { value, error ->
+        db.collection("specials").orderBy("date",Query.Direction.DESCENDING).addSnapshotListener { value, error ->
 
             if (error != null) {
                 Toast.makeText(this,error.localizedMessage,Toast.LENGTH_LONG).show()
@@ -80,19 +81,20 @@ class ListActivity : AppCompatActivity() {
 
                         val documents = value.documents
 
-                        coffeeArrayList.clear()
+                        specialsArrayList.clear()
 
                         for (document in documents) {
 
-                            val coffeename = document.get("coffeename") as String
-                            val coffeetype = document.get("coffeetype") as String
-                            val coffeehistorical = document.get("coffeehistorical") as String
-                            val coffeeImageLink = document.get("imagelink") as String
+                            val specialName = document.get("specialName") as String
+                            val specialDetails = document.get("specialDetails") as String
+                            val locationlink = document.get("locationlink") as String
+                            val imagelink = document.get("imagelink") as String
+                            val date = document.get("date") as Timestamp
+                            val specialPrice = document.get("specialPrice") as String
+                            val specialLocationName = document.get("specialLocationName") as String
 
-                            println(coffeename)
-
-                            val coffeeData = CoffeeData(coffeename,coffeetype,coffeehistorical,coffeeImageLink)
-                            coffeeArrayList.add(coffeeData)
+                            val coffeeData = SpecialsData(specialName,specialDetails,imagelink,locationlink,date,specialPrice,specialLocationName)
+                            specialsArrayList.add(coffeeData)
                         }
 
                         coffeeadapter.notifyDataSetChanged()
