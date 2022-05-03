@@ -94,32 +94,10 @@ class MainActivity : AppCompatActivity() {
                             val specialPrice = document.get("specialPrice") as String
                             val specialLocationName = document.get("specialLocationName") as String
 
-                            println(specialName)
-                            println(specialDetails)
-                            println(locationlink)
-                            println(imagelink)
-                            println(newOrOld)
-                            println(date)
-                            println(specialPrice)
-                            println(specialLocationName)
-
                             binding.specialPricetext.text = specialPrice
 
-
-                            val coffeeData = SpecialsData(specialName,specialDetails,imagelink,locationlink,date,specialPrice,specialLocationName)
-                            specialsArrayList.add(coffeeData)
-
-                            Picasso.get().load(imagelink).fit().centerCrop().into(binding.mainImageView, object : com.squareup.picasso.Callback {
-                                override fun onSuccess() {
-                                    binding.progressBarMain.visibility = View.GONE
-                                }
-
-                                override fun onError(e: Exception?) {
-                                    binding.progressBarMain.visibility = View.GONE
-                                    Toast.makeText(this@MainActivity,"Yükleme sırasında sorun oluştu. Anlayışınızı rica ederiz.", Toast.LENGTH_LONG).show()
-                                }
-
-                            })
+                            val specialData = SpecialsData(specialName,specialDetails,locationlink,imagelink,date,specialPrice,specialLocationName)
+                            specialsArrayList.add(specialData)
 
                             binding.locationButton.setOnClickListener {
 
@@ -137,6 +115,18 @@ class MainActivity : AppCompatActivity() {
 
                                 if (newOrOld == "n") {
 
+                                    Picasso.get().load(imagelink).fit().centerCrop().into(binding.mainImageView, object : com.squareup.picasso.Callback {
+                                        override fun onSuccess() {
+                                            binding.progressBarMain.visibility = View.GONE
+                                        }
+
+                                        override fun onError(e: Exception?) {
+                                            binding.progressBarMain.visibility = View.GONE
+                                            Toast.makeText(this@MainActivity,"Yükleme sırasında sorun oluştu. Anlayışınızı rica ederiz.", Toast.LENGTH_LONG).show()
+                                        }
+
+                                    })
+
                                     binding.specialName.text = specialName
 
                                     binding.descButton.setOnClickListener {
@@ -151,6 +141,8 @@ class MainActivity : AppCompatActivity() {
                                         startActivity(homeDetailsTextNextActivity)
 
                                     }
+
+
 
                                 }
                             }else {
@@ -182,7 +174,7 @@ class MainActivity : AppCompatActivity() {
 
                                 getDataMain()
 
-                                binding.btnNextList.setOnClickListener {
+                                binding.nextListActivityButton.setOnClickListener {
                                     val homePageNextListButton = Intent(this, ListActivity::class.java)
                                     startActivity(homePageNextListButton)
                                 }
@@ -194,7 +186,7 @@ class MainActivity : AppCompatActivity() {
 
                                 getDataMain()
 
-                                binding.btnNextList.setOnClickListener {
+                                binding.nextListActivityButton.setOnClickListener {
                                     val homePageNextListButton = Intent(this, ListActivity::class.java)
                                     startActivity(homePageNextListButton)
                                 }

@@ -1,5 +1,6 @@
 package com.app.unicoffee.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -13,22 +14,21 @@ import com.app.unicoffee.databinding.CoffeeRowBinding
 import com.squareup.picasso.Picasso
 import java.lang.Exception
 
-class CoffeeAdapter(private var specialsList: ArrayList<SpecialsData>) : RecyclerView.Adapter<CoffeeAdapter.CoffeeHolder>() {
+class SpecialAdapter(private var specialsList: ArrayList<SpecialsData>) : RecyclerView.Adapter<SpecialAdapter.SpecialHolder>() {
 
     private lateinit var context: Context
 
-    class CoffeeHolder (val binding: CoffeeRowBinding) : RecyclerView.ViewHolder (binding.root) {
+    class SpecialHolder (val binding: CoffeeRowBinding) : RecyclerView.ViewHolder (binding.root) {
 
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoffeeHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpecialHolder {
         val binding = CoffeeRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return CoffeeHolder(binding)
-        println(specialsList)
+        return SpecialHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CoffeeHolder, position: Int) {
+    override fun onBindViewHolder(holder: SpecialHolder, @SuppressLint("RecyclerView") position: Int) {
 
         Picasso.get().load(specialsList[position].imagelink).fit().centerCrop().into(holder.binding.cardImage, object : com.squareup.picasso.Callback {
             override fun onSuccess() {
@@ -37,6 +37,8 @@ class CoffeeAdapter(private var specialsList: ArrayList<SpecialsData>) : Recycle
 
             override fun onError(e: Exception?) {
                 holder.binding.progressBar.visibility = View.GONE
+                //
+            //  Toast.makeText(context,"Yükleme sırsasında bir sorun oluştu lütfen tekrar deneyiniz.",Toast.LENGTH_LONG).show()
             }
 
         })

@@ -14,7 +14,7 @@ import com.app.unicoffee.services.SpecialsData
 import com.app.unicoffee.services.ConnectionType
 import com.app.unicoffee.services.NetworkMonitorUtil
 import com.app.unicoffee.R
-import com.app.unicoffee.adapter.CoffeeAdapter
+import com.app.unicoffee.adapter.SpecialAdapter
 import com.app.unicoffee.databinding.ActivityListBinding
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
@@ -28,7 +28,7 @@ class ListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListBinding
     private val networkMonitor = NetworkMonitorUtil(this)
-    private lateinit var coffeeadapter : CoffeeAdapter
+    private lateinit var coffeeadapter : SpecialAdapter
     private lateinit var specialsArrayList : ArrayList<SpecialsData>
     private lateinit var db : FirebaseFirestore
 
@@ -56,7 +56,7 @@ class ListActivity : AppCompatActivity() {
     fun RecyclerListActivity () {
 
         binding.recyclercoffee.layoutManager = LinearLayoutManager(this)
-        coffeeadapter = CoffeeAdapter(specialsArrayList)
+        coffeeadapter = SpecialAdapter(specialsArrayList)
         binding.recyclercoffee.adapter = coffeeadapter
 
     }
@@ -93,8 +93,9 @@ class ListActivity : AppCompatActivity() {
                             val specialPrice = document.get("specialPrice") as String
                             val specialLocationName = document.get("specialLocationName") as String
 
-                            val coffeeData = SpecialsData(specialName,specialDetails,imagelink,locationlink,date,specialPrice,specialLocationName)
-                            specialsArrayList.add(coffeeData)
+
+                            val specialData = SpecialsData(specialName,specialDetails,locationlink,imagelink,date,specialPrice,specialLocationName)
+                            specialsArrayList.add(specialData)
                         }
 
                         coffeeadapter.notifyDataSetChanged()
@@ -140,9 +141,6 @@ class ListActivity : AppCompatActivity() {
                         }
                         listActivityDialog.setCancelable(false)
                         listActivityDialog.show().window!!.setBackgroundDrawableResource(R.drawable.dialog_background)
-
-
-
                     }
                 }
             }

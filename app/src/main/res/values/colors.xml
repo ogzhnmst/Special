@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="listitemcolorcode">#FFFFFFFF</color>
+    <color name="locationAndContacButton">#1D2021</color>
     <color name="cardview">#F5F5F5</color>
     <color name="progresbarstartColor">#3B3E41</color>
     <color name="progresbarendColor">#F5F5F5</color>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Uniq Coffee</string>
+    <string name="app_name">Special</string>
     <string name="details"><u>Daha Fazla</u></string>
     <string name="contact"><u>İletişim</u></string>
     <string name="checkNet">Opps,Sanırım internet bağlantınızda sorun mevcut. Lütfen internet bağlantınızı kontrol ederek tekrar deneyiniz.</string>

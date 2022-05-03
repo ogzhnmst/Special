@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,177 +9,208 @@
     android:orientation="vertical"
     tools:context=".view.MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/adView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
-            app:adSize="BANNER"
-            app:adUnitId="ca-app-pub-2824425182560416/6362423288" />
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/specialListText"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-2824425182560416/6362423288"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/specialName"
+        app:layout_constraintVertical_bias="0.97"
+        app:layout_constraintWidth_percent="0.7" />
 
 
         <TextView
             android:id="@+id/specialName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="90dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:ellipsize="end"
             android:fontFamily="@font/robotoblack"
-            android:gravity="center"
-            android:letterSpacing="0.05"
-            android:text="Americano"
+            android:gravity="bottom"
+            android:letterSpacing="0.01"
+            android:maxLines="1"
+            android:text="chocatle mocha asdas "
             android:textColor="@color/white"
-            android:textSize="35sp">
+            android:textSize="35sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.11"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.04"
+            app:layout_constraintWidth_percent="0.9" >
 
         </TextView>
 
-        <TextView
-            android:id="@+id/ofWeekText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/robotolight"
-            android:layout_below="@id/specialName"
-            android:layout_alignLeft="@id/specialName"
-            android:letterSpacing="0.05"
-            android:gravity="center"
-            android:text="Haftanın Speciali..."
-            android:textColor="@color/white"
-            android:textSize="15sp">
+    <TextView
+        android:id="@+id/ofWeekText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/specialName"
+        android:layout_alignLeft="@id/specialName"
+        android:fontFamily="@font/robotoregular"
+        android:gravity="top"
+        android:letterSpacing="0.01"
+        android:text="Haftanın Speciali..."
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/nextListActivityButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/specialName"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintWidth_percent="0.5">
 
-        </TextView>
+    </TextView>
 
-        <ProgressBar
-            android:id="@+id/progressBarMain"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="115dp"
-            android:layout_centerVertical="true"
-            android:indeterminate="true"
-            android:indeterminateDrawable="@drawable/progres_bar_background"
-            android:progress="0"
-            android:layout_marginTop="115dp" />
+    <ProgressBar
+        android:id="@+id/progressBarMain"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progres_bar_background"
+        android:progress="0"
+        app:layout_constraintBottom_toBottomOf="@+id/mainImageView"
+        app:layout_constraintEnd_toEndOf="@+id/mainImageView"
+        app:layout_constraintStart_toStartOf="@+id/mainImageView"
+        app:layout_constraintTop_toTopOf="@+id/mainImageView"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintWidth_percent="0.2"/>
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/mainImageView"
-            android:layout_width="189dp"
-            android:layout_height="413dp"
-            app:shapeAppearanceOverlay="@style/mainImageCircular"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="215dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginBottom="35dp">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/mainImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/nextListActivityButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ofWeekText"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.5"
+        app:shapeAppearanceOverlay="@style/mainImageCircular">
 
-        </com.google.android.material.imageview.ShapeableImageView>
+    </com.google.android.material.imageview.ShapeableImageView>
 
-        <View
-            android:id="@+id/mainButtonBackground1"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="235dp"
-            android:background="@drawable/main_button_backgorund"
-            android:backgroundTint="@color/locationButton">
 
-        </View>
+    <ImageButton
+        android:id="@+id/locationButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/main_button_backgorund"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/descButton"
+        app:layout_constraintEnd_toEndOf="@+id/descButton"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/descButton"
+        app:layout_constraintTop_toTopOf="@+id/mainImageView"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.2"
+        android:src="@drawable/ic_location_button" />
 
-        <Button
-            android:id="@+id/locationButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="245dp"
-            android:background="@drawable/ic_location_button"
-            android:backgroundTint="@color/white">
-
-        </Button>
-
-        <View
-            android:id="@+id/mainButtonBackground2"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+        <ImageButton
+            android:id="@+id/descButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/locationButton"
             android:background="@drawable/main_button_backgorund"
             android:backgroundTint="@color/locationButton"
-            android:layout_below="@id/mainButtonBackground1"
-            android:layout_marginTop="80dp"
-            android:layout_marginStart="45dp">
-        </View>
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_content_button"
+            app:layout_constraintBottom_toBottomOf="@+id/mainImageView"
+            app:layout_constraintEnd_toStartOf="@+id/mainImageView"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mainImageView"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintWidth_percent="0.2"/>
 
-        <Button
-            android:id="@+id/descButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/mainButtonBackground1"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="91dp"
-            android:background="@drawable/ic_content_button"
-            android:backgroundTint="@color/white">
-
-        </Button>
 
         <View
             android:id="@+id/mainButtonBackground3"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:background="@drawable/main_button_backgorund"
             android:backgroundTint="@color/locationButton"
-            android:layout_below="@id/mainButtonBackground2"
-            android:layout_marginTop="80dp"
-            android:layout_marginStart="45dp">
+            android:layout_below="@id/descButton"
+            app:layout_constraintWidth_percent="0.2"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintBottom_toBottomOf="@+id/mainImageView"
+            app:layout_constraintEnd_toEndOf="@+id/descButton"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/descButton"
+            app:layout_constraintTop_toBottomOf="@+id/descButton">
         </View>
 
-        <TextView
-            android:id="@+id/specialPricetext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="45₺"
-            android:fontFamily="@font/robotoblack"
-            android:textSize="27sp"
-            android:textColor="@color/white"
-            android:layout_marginStart="57dp"
-            android:layout_below="@id/mainButtonBackground2"
-            android:layout_marginTop="95dp" >
+    <TextView
+        android:id="@+id/specialPricetext"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/descButton"
+        android:fontFamily="@font/robotoblack"
+        android:text="45₺"
+        android:textColor="@color/white"
+        android:textSize="27sp"
+        android:gravity="center"
+        android:padding="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mainButtonBackground3"
+        app:layout_constraintEnd_toEndOf="@+id/mainButtonBackground3"
+        app:layout_constraintStart_toStartOf="@+id/mainButtonBackground3"
+        app:layout_constraintTop_toTopOf="@+id/mainButtonBackground3">
 
-        </TextView>
+    </TextView>
 
 
-        <TextView
-            android:id="@+id/specialListText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btn_next_list"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/robotoblack"
-            android:gravity="center"
-            android:letterSpacing="0.05"
-            android:text="Special List"
-            android:textColor="@color/white"
-            android:textSize="15sp">
+    <TextView
+        android:id="@+id/specialListText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/robotoblack"
+        android:gravity="top"
+        android:letterSpacing="0.05"
+        android:text="Special List"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nextListActivityButton">
 
-        </TextView>
+    </TextView>
 
-        <Button
-            android:id="@+id/btn_next_list"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/mainImageView"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/buttonlist"
-            android:backgroundTint="@color/white">
 
-        </Button>
+    <ImageButton
+        android:id="@+id/nextListActivityButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/main_list_button_background"
+        android:src="@drawable/ic_list_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="fitCenter"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/specialName"
+        app:layout_constraintVertical_bias="0.825"
+        app:layout_constraintWidth_percent="0.25"
+        app:tint="@color/listitemcolorcode" />
 
-    </RelativeLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
