@@ -11,6 +11,7 @@ import android.view.WindowManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.app.unicoffee.services.SpecialsData
 import com.app.unicoffee.services.ConnectionType
 import com.app.unicoffee.services.NetworkMonitorUtil
@@ -202,14 +203,14 @@ class MainActivity : AppCompatActivity() {
                         val mainActivityDialog = AlertDialog.Builder(this)
                         val mainView : View = layoutInflater.inflate(R.layout.dialog_for_layout,null)
                         mainActivityDialog.setView(mainView)
-                        val exitButton : TextView = mainView.findViewById(R.id.exit_app)
+                        mainActivityDialog.show().window!!.setLayout(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+
+                        val exitButton : TextView = mainView.findViewById(R.id.exitApp)
                         exitButton.setOnClickListener {
                             moveTaskToBack(true)
                             exitProcess(0)
                         }
                         mainActivityDialog.setCancelable(false)
-                        mainActivityDialog.show().window!!.setBackgroundDrawableResource(R.drawable.dialog_background)
-
                     }
                 }
             }

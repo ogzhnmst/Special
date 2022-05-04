@@ -9,6 +9,7 @@ import android.view.WindowManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.unicoffee.services.SpecialsData
 import com.app.unicoffee.services.ConnectionType
@@ -133,14 +134,14 @@ class ListActivity : AppCompatActivity() {
 
                         val listActivityDialog = AlertDialog.Builder(this)
                         val mainView : View = layoutInflater.inflate(R.layout.dialog_for_layout,null)
+                        listActivityDialog.show().window!!.setLayout(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
                         listActivityDialog.setView(mainView)
-                        val exitButton : TextView = mainView.findViewById(R.id.exit_app)
+                        val exitButton : TextView = mainView.findViewById(R.id.exitApp)
                         exitButton.setOnClickListener {
                             moveTaskToBack(true)
                             exitProcess(0)
                         }
                         listActivityDialog.setCancelable(false)
-                        listActivityDialog.show().window!!.setBackgroundDrawableResource(R.drawable.dialog_background)
                     }
                 }
             }
